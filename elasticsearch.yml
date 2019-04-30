@@ -1,0 +1,6 @@
+- hosts: esgroup
+  user: ubuntu
+  roles:
+   - { role: java1.8, tags: ['java'] }
+   - {role: elasticsearch, tags: ['elasticsearch']}
+  become: true

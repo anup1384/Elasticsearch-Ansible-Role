@@ -1,0 +1,22 @@
+---
+- name: make data directory
+  file:
+    path: /esdata
+    owner: elasticsearch
+    group: elasticsearch
+    state: directory
+
+- name: Include OS Specific setup tasks
+  include_tasks: es-{{ ansible_os_family }}.yml
+
+- include_tasks: config.yml
+
+- name: daemon_reload 
+  systemd:
+    daemon_reload: yes
+
+- name: start elasticsearch
+  service:
+    name: elasticsearch
+    state: started
+    enabled: yes

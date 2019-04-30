@@ -1,0 +1,23 @@
+---
+elasticsearch_version: "6.5.4"
+cluster_name: gg-es-commoncluster
+
+es_jvm_dump: /var/lib/elasticsearch/heap
+data_path: /esdata
+log_path: /var/log/elasticsearch
+
+elasticsearchIP: "0.0.0.0"
+http_port: 9200
+tcp_port: 9300
+
+min_heap: "{{ ansible_memtotal_mb // 2 }}m"
+max_heap: "{{ ansible_memtotal_mb // 2 }}m"
+
+m_lock: "true"
+nofile_limit: "65536"
+nproc_limit: "5000"
+swapness: 1
+vm_max_count: 2621444
+
+node_master: true
+node_data: true
